@@ -1,0 +1,22 @@
+GRU
+
+
+nHidden 50
+Optimization finished
+Testing Accuracy: 0.9573
+The training takes 923.289822 second to finish
+
+
+
+nHidden 100
+Optimization finished
+Testing Accuracy: 0.9659
+The training takes 1300.186873 second to finish
+
+
+
+
+nHidden 200
+Optimization finished
+Testing Accuracy: 0.9701
+The training takes 2734.159827 second to finish

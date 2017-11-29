@@ -1,0 +1,16 @@
+RNN
+
+nHidden 100
+Optimization finished
+Testing Accuracy: 0.9702
+The training takes 464.374345 second to finish
+
+nHidden 50
+Optimization finished
+Testing Accuracy: 0.9539
+The training takes 297.496276 second to finish
+
+nHidden 200
+Optimization finished
+Testing Accuracy: 0.9779
+The training takes 886.200975 second to finish

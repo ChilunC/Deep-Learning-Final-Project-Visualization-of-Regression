@@ -1,0 +1,16 @@
+LSTM
+
+nHidden 50
+Optimization finished
+Testing Accuracy: 0.9593
+The training takes 834.191606 second to finish
+
+nHidden 100
+Optimization finished
+Testing Accuracy: 0.9695
+The training takes 1537.005326 second to finish
+
+nHidden 200
+Optimization finished
+Testing Accuracy: 0.9698
+The training takes 3313.998107 second to finish
