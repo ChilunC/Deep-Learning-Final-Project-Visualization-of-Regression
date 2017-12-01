@@ -35,7 +35,7 @@ def unpool2(updates, mask, ksize=2, name="unpool"):
         ksize = [1, ksize, ksize, 1]
     input_shape = updates.get_shape().as_list()
     #  calculation new shape
-    output_shape = [input_shape[1] * ksize[1], input_shape[2] * ksize[2], input_shape[3]]
+    output_shape = [input_shape[0],input_shape[1] * ksize[1], input_shape[2] * ksize[2], input_shape[3]]
     # calculation indices for batch, height, width and feature maps
     one_like_mask = tf.ones_like(mask)
     bsize = tf.to_int64(tf.shape(updates)[0])

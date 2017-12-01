@@ -107,7 +107,7 @@ def max_pool_2x2(x):
     '''
 
     # IMPLEMENT YOUR MAX_POOL_2X2 HERE
-    #h_max, argmax, argmax_mask = Decov2.max_pool(x) #argmax, argmax_mask)
+    #h_max, argmax = Decov2.max_pool(x) #argmax, argmax_mask)
     h_max = tf.nn.max_pool(x, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
 
     return h_max #Decov2.max_pool(x) #h_max
@@ -115,9 +115,9 @@ def max_pool_2x2(x):
 
 # Loading CIFAR10 images from director
 
-ntrain = 1000
-ntest = 100
-nclass = 10
+ntrain = 100
+ntest = 10
+nclass = 1
 imsize = 28
 nchannels = 1
 batchsize = 68
@@ -215,7 +215,7 @@ print(h_conv1)
 #h_pool1, argmax1 = max_pool_2x2(h_conv1)
 h_pool1 = max_pool_2x2(h_conv1)
 #out_shape = [-1, imsize,imsize,nchannels]
-
+print(h_pool1.shape)
 out_shape=[batchsizeFeatures,imsize,imsize,nchannels]
 featuresReLu1 = tf.placeholder("float", [None, 14*2, 14*2, 32])
 #Featshape = h_pool1.get_shape().as_list()
@@ -540,27 +540,7 @@ pylab.savefig(fname)
 plt.clf()
 
 
-#pl1 = plt.scatter(stepAcc, trainAcc)
-#fname = 'accCNN/Train_Accuracy.png'
-#pylab.savefig(fname)
-#plt.clf()
-#pl1 = plt.scatter(stepAcc, testAcc)
-#fname = 'accCNN/Test_Accuracy.png'
-#pylab.savefig(fname)
-#plt.clf()
-#acthcon1 = []
-#acthcon2 = []
-#plt.show()
 
-#mp.image.imsave(fname, pl1, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
-#pl1 = mp.pyplot.plot(centropyTest)
-#fname = 'PyPlotcentropy.png'
-#mp.pyplot.savefig(fname, bbox_inches='tight')
-#mp.image.imsave(fname, pl1, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
-#pl1 = mp.pyplot.plot(accTest)
-#fname = 'PyPlotacc.png'
-#mp.pyplot.savefig(fname, bbox_inches='tight')
-#mp.image.imsave(fname, pl1, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
 
 # test
 wcon1 = W_conv1.eval() #sess.run([W_conv1], feed_dict={tf_data: batch_xs, tf_labels: batch_ys, keep_prob: 1.0})
@@ -574,78 +554,7 @@ for b in range(32):
     fname = 'CNNWeightRes/Weights%05d.png' % (b)
     misc.imsave(fname, im3)
     #print(b)
-    #print(len(wcon1[0][0][0][0]))
-    #wcon1blah = wcon1[0][:, :, 0, b]
-    #print(wcon1blah)
-    #img = mp.pyplot.imshow(wcon1[0][:,:,0,b])
-    #im2 = Image.new(im.mode, im.size)
-    #im2.putdata(img)
-    #img.show()
-    #img = plt.imshow(im.reshape(wcon1blah.shape[0], wcon1blah.shape[1]), cmap=plt.cm.Greys)
-    #img = Image.fromarray(W_conv1[0][:,:,0,b])
-    #img = tf.reshape(wcon1[0][:,:,0,b], [5,5])
 
-    #mp.image.imsave(fname, im2, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
-
-    #raw_input()
-
-#for i in range(ntest*nclass): # try a small iteration size once it works then continue
-    #testacc, hcon1, hcon2 = sess.run([accuracy, h_conv1, h_conv2], feed_dict={tf_data: Test, tf_labels: LTest, keep_prob: 1.0})
-    #hcon1Test.append(hcon1)
-    #hcon2Test.append(hcon2)
-    #accTest2.append(testacc)
-    #mean.append(tf.reduce_mean(hcon1))
-    #tf.summary.scalar('mean', mean)
-    #stddev.append(tf.sqrt(tf.reduce_mean(tf.square(hcon1 - mean[i]))))
-    #max.append(tf.reduce_max(hcon1))
-    #min.append(tf.reduce_min(hcon1))
-
-    #mean2.append(tf.reduce_mean(hcon2))
-    #tf.summary.scalar('mean', mean)
-    #stddev2.append(tf.sqrt(tf.reduce_mean(tf.square(hcon2 - mean2[i]))))
-    #max2.append(tf.reduce_max(hcon2))
-    #min2.append(tf.reduce_min(hcon2))
-    #tf.summary.histogram('histogram', var)
-        #summary_writer.add_summary(summary_str, i)
-        #summary_str, centropy = sess.run([summary_op, cross_entropy], feed_dict={tf_data: batch_xs, tf_labels: batch_ys, keep_prob: 0.5})
-        #summary_writer.add_summary(summary_str, i)
-        #summary_str, acc = sess.run([summary_op, accuracy], feed_dict={tf_data: batch_xs, tf_labels: batch_ys, keep_prob: 0.5})
-        #summary_writer.add_summary(summary_str, i)
-        #summary_writer.flush()
-#pl1 = mp.pyplot.plot(hcon1Test)
-#fname = 'PyPlothcon1.png'
-#mp.image.imsave(fname, pl1, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
-#print(mean)
-#pl1 = mp.pyplot.plot(mean)
-#fname = 'PyPlothcon1mean.png'
-#mp.image.imsave(fname, pl1, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
-#pl1 = mp.pyplot.plot(stddev)
-#fname = 'PyPlothcon1stddev.png'
-#mp.image.imsave(fname, pl1, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
-#pl1 = mp.pyplot.plot(max)
-#fname = 'PyPlothcon1max.png'
-#mp.image.imsave(fname, pl1, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
-#pl1 = mp.pyplot.plot(min)
-#fname = 'PyPlothcon1min.png'
-#mp.image.imsave(fname, pl1, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
-#pl1 = mp.pyplot.plot(hcon2Test)
-#fname = 'PyPlotcentropy.png'
-#mp.image.imsave(fname, pl1, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
-#pl1 = mp.pyplot.plot(mean2)
-#fname = 'PyPlothcon2mean.png'
-#mp.image.imsave(fname, pl1, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
-#pl1 = mp.pyplot.plot(stddev2)
-#fname = 'PyPlothcon2stddev.png'
-#mp.image.imsave(fname, pl1, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
-#pl1 = mp.pyplot.plot(max2)
-#fname = 'PyPlothcon2max.png'
-#mp.image.imsave(fname, pl1, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
-#pl1 = mp.pyplot.plot(min2)
-#fname = 'PyPlothcon2min.png'
-#mp.image.imsave(fname, pl1, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
-#pl1 = mp.pyplot.plot(accTest)
-#fname = 'PyPlotacc.png'
-#mp.image.imsave(fname, pl1, vmin=None, vmax=None, cmap=None, format=None, origin=None, dpi=100)
 
 print("test accuracy %g" % accuracy.eval(feed_dict={tf_data: Test, tf_labels: LTest, keep_prob: 1.0}))
 
